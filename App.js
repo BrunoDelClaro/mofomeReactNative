@@ -10,6 +10,8 @@ import { NativeRouter, Routes, Route } from "react-router-native";
 import AddCompra from './componentes/AddCompra';
 import ChangeCompra from './componentes/ChangeCompra';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 export default function App() {
 
   const [compras, setCompras] = useState([])
@@ -19,6 +21,7 @@ export default function App() {
     try {
       await AsyncStorage.setItem("compras", JSON.stringify(compras));
     } catch (error) {
+      console.log("As compras não foram armazenados")
       Alert.alert("As compras não foram armazenados");
     }
   }
@@ -28,17 +31,20 @@ export default function App() {
       const t = await AsyncStorage.getItem("compras");
       if (t !== null) setCompras(JSON.parse(t));
     } catch (error) {
+      console.log("As compras não foram carregadas",error)
       Alert.alert("As compras não foram carregadas");
     }
   }
 
 
   useEffect(()=>{
+    console.log("Inicidando")
     recuperaDados();
   },[])
 
   useEffect(()=>{
     armazenaDados()
+    console.log(compras);
   },[compras])
 
 
@@ -46,20 +52,20 @@ export default function App() {
 
     <NativeRouter>
       <View style={styles.app}>
-      <Cabecalho nCompras={10}></Cabecalho>
+      <Cabecalho nCompras={compras.length}></Cabecalho>
         
         <View style={styles.conteudo}>
           <Routes>
             <Route
               path="/"
               element={
-                  <Lista compras={compras}></Lista>
+                  <Lista setCompras={setCompras} compras={compras}></Lista>
               }
             />
             <Route
               path="/addCompra"
               element={
-                <AddCompra setCompras={setCompras}/>
+                <AddCompra compras={compras} setCompras={setCompras}/>
               }
             />
 

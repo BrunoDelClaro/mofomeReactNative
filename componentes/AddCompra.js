@@ -6,12 +6,20 @@ import { useState } from 'react';
 
 const AddCompra = (props) =>{
 
-    const {setCompras} = props
+    const {compras , setCompras} = props
 
     const [nome, setNome] = useState("")
+    const [descricao, setDescricao] = useState("")
+    const [quantidade, setQuantidade] = useState(0)
 
     const adicionarCompra = ()=>{
-
+        const c = {
+            id:compras.length,
+            nome: nome,
+            descricao: descricao,
+            quantidade: parseInt(quantidade)
+        }
+        setCompras([...compras, c])
     }
 
     return(
@@ -30,10 +38,14 @@ const AddCompra = (props) =>{
                         <TextInput
                         placeholder="Descrição"
                         style={styles.input}
+                        defaultValue={descricao}
+                        onChangeText={(descricao) => setDescricao(descricao)}
                     />
                     <TextInput
                         placeholder="Quantidade"
                         style={styles.input}
+                        defaultValue={quantidade}
+                        onChangeText={(quantidade) => setQuantidade(quantidade)}
                     />
                 </View>
                 <View style={styles.btnGroup}>
@@ -42,11 +54,12 @@ const AddCompra = (props) =>{
                             <Text>Cancelar</Text>
                         </View>
                     </Link>
-                    <TouchableOpacity onPress={adicionarCompra}>
-                        <View style={[styles.btn, styles.red]}>
-                            <Text>Incluir</Text>
-                        </View>
-                    </TouchableOpacity>
+                    
+                        <TouchableOpacity onPress={adicionarCompra}>
+                            <View style={[styles.btn, styles.red]}>
+                                <Text>Incluir</Text>
+                            </View>
+                        </TouchableOpacity>
                 </View>
             </View>
         </KeyboardAvoidingView>

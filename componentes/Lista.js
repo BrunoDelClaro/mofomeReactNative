@@ -17,8 +17,13 @@ import { Link } from "react-router-native";
 
 const Lista = (props) => {
 
-    const {compras} = props
+    const {compras,setCompras} = props
     console.log(compras)
+
+    const apagarCompras = ()=>{
+        setCompras([])
+    }
+
     return(
         <View style={styles.component}>
             <View style={styles.componentHeader}>
@@ -28,6 +33,11 @@ const Lista = (props) => {
                         <Text style={styles.btn}>Adicionar</Text>
                     </View>
                 </Link>
+                <TouchableOpacity onPress={apagarCompras}>
+                        <View style={[styles.btn, styles.white]}>
+                            <Text>Apagar</Text>
+                        </View>
+                </TouchableOpacity>
             </View>
             <View style={styles.componentContent}>
                 <FlatList
