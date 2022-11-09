@@ -13,6 +13,10 @@ Possui uma lista com conteudo principal e uma barra superior com dois botões
 
 Ao clicar nesse botão o usuário será redirecionado a tela de adição de produto.
 
+### Botão de Alterar:
+
+Ao clicar nesse botão o usuário será redirecionado a tela de alterar o produto.
+
 ## Com itens na lista
 
 ![Lista com itens](/readmeImages/tela1.png)

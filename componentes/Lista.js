@@ -8,7 +8,6 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import { Button } from "react-native-web";
 import styles from "../estilos";
 
 import Compra from "./Compra"
@@ -27,7 +26,7 @@ const Lista = (props) => {
     return(
         <View style={styles.component}>
             <View style={styles.componentHeader}>
-                <Text style={styles.h1}>Minha Lista de Compras</Text>
+                <Text style={styles.h1}>Compras</Text>
                 <Link to="/addCompra">
                     <View>
                         <Text style={styles.btn}>Adicionar</Text>
