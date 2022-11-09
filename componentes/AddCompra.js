@@ -54,12 +54,14 @@ const AddCompra = (props) =>{
                             <Text>Cancelar</Text>
                         </View>
                     </Link>
-                    
+                    <Link to="/">
                         <TouchableOpacity onPress={adicionarCompra}>
                             <View style={[styles.btn, styles.red]}>
                                 <Text>Incluir</Text>
                             </View>
                         </TouchableOpacity>
+
+                    </Link>
                 </View>
             </View>
         </KeyboardAvoidingView>

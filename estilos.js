@@ -183,6 +183,11 @@ export default StyleSheet.create({
         display:"flex",
         flexDirection:"row",
         alignItems:"center"
+      },
+
+      selected:{
+
+        backgroundColor:"green"
       }
 
 
